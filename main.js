@@ -206,4 +206,78 @@
       });
     });
   });
+
+  /* Cookie consent: Google Fonts + Google Maps only load after acceptance */
+  var GOOGLE_FONTS_HREF =
+    "https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap";
+
+  function loadGoogleFonts() {
+    if (document.getElementById("google-fonts-link")) return;
+    var link = document.createElement("link");
+    link.id = "google-fonts-link";
+    link.rel = "stylesheet";
+    link.href = GOOGLE_FONTS_HREF;
+    document.head.appendChild(link);
+  }
+
+  function loadAllMaps() {
+    document.querySelectorAll("[data-map-frame]").forEach(function (frame) {
+      var iframe = frame.querySelector("iframe[data-src]");
+      var placeholder = frame.querySelector("[data-map-placeholder]");
+      if (iframe && iframe.getAttribute("data-src")) {
+        iframe.src = iframe.getAttribute("data-src");
+        iframe.removeAttribute("data-src");
+        iframe.style.display = "";
+      }
+      if (placeholder) placeholder.style.display = "none";
+    });
+  }
+
+  var cookieBanner = document.querySelector("[data-cookie-banner]");
+  var consent = localStorage.getItem("gbl-cookie-consent");
+
+  if (consent === "accepted") {
+    loadGoogleFonts();
+    loadAllMaps();
+  } else if (consent !== "declined" && cookieBanner) {
+    setTimeout(function () {
+      cookieBanner.classList.add("is-visible");
+    }, 600);
+  }
+
+  if (cookieBanner) {
+    var acceptBtn = cookieBanner.querySelector("[data-cookie-accept]");
+    var declineBtn = cookieBanner.querySelector("[data-cookie-decline]");
+    if (acceptBtn) {
+      acceptBtn.addEventListener("click", function () {
+        localStorage.setItem("gbl-cookie-consent", "accepted");
+        cookieBanner.classList.remove("is-visible");
+        loadGoogleFonts();
+        loadAllMaps();
+      });
+    }
+    if (declineBtn) {
+      declineBtn.addEventListener("click", function () {
+        localStorage.setItem("gbl-cookie-consent", "declined");
+        cookieBanner.classList.remove("is-visible");
+      });
+    }
+  }
+
+  /* Individual "load map" button: loads just that map on demand,
+     regardless of the global cookie choice. */
+  document.querySelectorAll("[data-map-load]").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var frame = btn.closest("[data-map-frame]");
+      if (!frame) return;
+      var iframe = frame.querySelector("iframe[data-src]");
+      var placeholder = frame.querySelector("[data-map-placeholder]");
+      if (iframe && iframe.getAttribute("data-src")) {
+        iframe.src = iframe.getAttribute("data-src");
+        iframe.removeAttribute("data-src");
+        iframe.style.display = "";
+      }
+      if (placeholder) placeholder.style.display = "none";
+    });
+  });
 })();

@@ -150,9 +150,9 @@
           <p>A snapshot of our import, export and trade catalog — see the full list on the Products page.</p>
         </div>
         <div class="catalog-grid reveal">
-          <div class="catalog-item"><span class="idx">01</span><h3>Auto Spare Parts</h3><p>Components sourced and traded for the automotive aftermarket.</p></div>
-          <div class="catalog-item"><span class="idx">02</span><h3>Electrical &amp; Electronic Devices</h3><p>Everyday electronics and electrical equipment.</p></div>
-          <div class="catalog-item"><span class="idx">03</span><h3>Household Goods</h3><p>Practical items for the home, sourced reliably.</p></div>
+          <div class="catalog-item"><img class="catalog-img" src="goods-move-01.jpg" alt="Auto Spare Parts" loading="lazy"><span class="idx">01</span><h3>Auto Spare Parts</h3><p>Components sourced and traded for the automotive aftermarket.</p></div>
+          <div class="catalog-item"><img class="catalog-img" src="goods-move-02.jpg" alt="Electrical &amp; Electronic Devices" loading="lazy"><span class="idx">02</span><h3>Electrical &amp; Electronic Devices</h3><p>Everyday electronics and electrical equipment.</p></div>
+          <div class="catalog-item"><img class="catalog-img" src="goods-move-03.jpg" alt="Household Goods" loading="lazy"><span class="idx">03</span><h3>Household Goods</h3><p>Practical items for the home, sourced reliably.</p></div>
         </div>
         <div style="margin-top:32px">
           <a href="#" class="btn btn-outline-dark" data-goto="products">See Full Catalog</a>
@@ -245,9 +245,9 @@
           <p>Ein Ausschnitt unseres Import-, Export- und Handelskatalogs — die vollständige Liste finden Sie auf der Seite Produkte.</p>
         </div>
         <div class="catalog-grid reveal">
-          <div class="catalog-item"><span class="idx">01</span><h3>Autoersatzteile</h3><p>Komponenten, beschafft und gehandelt für den Automobil-Ersatzteilmarkt.</p></div>
-          <div class="catalog-item"><span class="idx">02</span><h3>Elektro- &amp; Elektronikgeräte</h3><p>Elektronik und elektrische Geräte für den täglichen Bedarf.</p></div>
-          <div class="catalog-item"><span class="idx">03</span><h3>Haushaltswaren</h3><p>Praktische Artikel für den Haushalt, zuverlässig beschafft.</p></div>
+          <div class="catalog-item"><img class="catalog-img" src="goods-move-01.jpg" alt="Autoersatzteile" loading="lazy"><span class="idx">01</span><h3>Autoersatzteile</h3><p>Komponenten, beschafft und gehandelt für den Automobil-Ersatzteilmarkt.</p></div>
+          <div class="catalog-item"><img class="catalog-img" src="goods-move-02.jpg" alt="Elektro- &amp; Elektronikgeräte" loading="lazy"><span class="idx">02</span><h3>Elektro- &amp; Elektronikgeräte</h3><p>Elektronik und elektrische Geräte für den täglichen Bedarf.</p></div>
+          <div class="catalog-item"><img class="catalog-img" src="goods-move-03.jpg" alt="Haushaltswaren" loading="lazy"><span class="idx">03</span><h3>Haushaltswaren</h3><p>Praktische Artikel für den Haushalt, zuverlässig beschafft.</p></div>
         </div>
         <div style="margin-top:32px">
           <a href="#" class="btn btn-outline-dark" data-goto="products">Gesamten Katalog ansehen</a>
@@ -931,8 +931,12 @@
               </li>
             </ul>
 
-            <div class="map-frame">
-              <iframe src="https://www.google.com/maps?q=Remagen,+Germany&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Remagen, Germany"></iframe>
+            <div class="map-frame" data-map-frame>
+              <div class="map-placeholder" data-map-placeholder>
+                <p>The interactive map loads via Google Maps once you accept cookies.</p>
+                <button type="button" class="btn btn-outline-dark" data-map-load>Load map</button>
+              </div>
+              <iframe data-src="https://www.google.com/maps?q=Remagen,+Germany&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Remagen, Germany" style="display:none"></iframe>
             </div>
             <p class="form-note">Exact office address to be added once finalized.</p>
           </div>
@@ -1029,8 +1033,12 @@
               </li>
             </ul>
 
-            <div class="map-frame">
-              <iframe src="https://www.google.com/maps?q=Remagen,+Germany&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Remagen, Deutschland"></iframe>
+            <div class="map-frame" data-map-frame>
+              <div class="map-placeholder" data-map-placeholder>
+                <p>Die interaktive Karte lädt über Google Maps, sobald Sie Cookies akzeptieren.</p>
+                <button type="button" class="btn btn-outline-dark" data-map-load>Karte laden</button>
+              </div>
+              <iframe data-src="https://www.google.com/maps?q=Remagen,+Germany&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Remagen, Deutschland" style="display:none"></iframe>
             </div>
             <p class="form-note">Die genaue Geschäftsadresse wird nach Finalisierung ergänzt.</p>
           </div>
@@ -1161,6 +1169,23 @@
 <button class="float-totop" aria-label="Back to top">
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
 </button>
+
+<div class="cookie-banner" data-cookie-banner>
+  <div data-lang="en">
+    <p class="cookie-banner-text">We use cookies for essential site features and to load embedded content (Google Fonts, Google Maps). See our <a href="#" data-goto="about" data-anchor="impressum">Legal Notice</a> for details.</p>
+  </div>
+  <div data-lang="de" style="display:none">
+    <p class="cookie-banner-text">Wir verwenden Cookies für grundlegende Funktionen und zum Laden eingebetteter Inhalte (Google Fonts, Google Maps). Details finden Sie in unserem <a href="#" data-goto="about" data-anchor="impressum">Impressum</a>.</p>
+  </div>
+  <div class="cookie-banner-actions">
+    <button type="button" class="btn btn-outline" data-cookie-decline>
+      <span data-lang="en">Decline</span><span data-lang="de" style="display:none">Ablehnen</span>
+    </button>
+    <button type="button" class="btn btn-gold" data-cookie-accept>
+      <span data-lang="en">Accept</span><span data-lang="de" style="display:none">Akzeptieren</span>
+    </button>
+  </div>
+</div>
 
 <script src="main.js"></script>
 
